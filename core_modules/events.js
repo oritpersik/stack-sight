@@ -13,7 +13,7 @@ module.exports = function(StackSight, sts) {
 
 	Events.prototype.publish = function(key, name , data) {
 
-	    stsEvents.emit(name, data);
+	    stsEvents.emit(key + ' ' + name, data);
 
         var design = data.design || {};
         design.color = data.design.color || '#176583';
