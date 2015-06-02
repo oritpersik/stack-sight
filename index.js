@@ -11,7 +11,9 @@ function StackSight(options) {
     var options = options || {};
     if (!options.user || !options.app) throw new Error('stackSight must user and app');
     this.user = options.user || this.user;
+    this.appId = options.appId || this.appId;
     this.app = options.app || this.app;
+
 }
 
 StackSight.index = function(data) {
@@ -41,12 +43,17 @@ StackSight.index = function(data) {
 };
 
 
-(require('./core-modules/events')(StackSight));
+(require('./core_modules/events')(StackSight));
+(require('./core_modules/console')(StackSight));
+// (require('./core_modules/sessions')(StackSight));
 
-module.exports = function(user, app) {
-    
+module.exports = function(options) {
+
     if (!stackSight)
-        stackSight = new StackSight(user, app);
+        stackSight = new StackSight(options);
+
+     if (stackSight.app)
+        (require('./core_modules/requests')(StackSight, stackSight.app));
 
     return stackSight;
 };

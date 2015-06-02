@@ -1,6 +1,6 @@
 {
   "name": "stack-sight",
-  "version": "1.0.0",
+  "version": "1.0.01",
   "description": "stack-sight",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "url": "https://github.com/oritpersik/stack-sight.git"
   },
   "dependencies": {
-      "request": "latest"
+      "request": "latest",
+      "morgan" : "latest"
     },
   "keywords": [
     "mean",
