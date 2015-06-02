@@ -2,7 +2,7 @@
 
 
 
-module.exports = function(StackSight) {
+module.exports = function(StackSight, sts) {
 
 	var EventEmitter = require('events').EventEmitter,
 		stsEvents = new EventEmitter();
@@ -15,14 +15,20 @@ module.exports = function(StackSight) {
 
 	    stsEvents.emit(name, data);
 
+        var design = data.design || {};
+        design.color = data.design.color || '#176583';
+        design.icon = data.design.icon || 'fa-bars';
+        delete data.design;
+
 		var options = {
 			index: 'events',
 			type: 'events',
 			name: name,
+            design: design,
 			data: data
 		};
 
-		StackSight.index(options);
+		sts.index(options);
 	   
 	};
 

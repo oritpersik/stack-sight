@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(StackSight, app) {
+module.exports = function(sts) {
 
 	var options = {
 		skip: function(req, res) {
@@ -13,9 +13,9 @@ module.exports = function(StackSight, app) {
                 status: res.statusCode
             };
 
-            StackSight.index(data);
+            sts.index(data);
 		}
 	};
 
-  	app.use(require('morgan')('dev', options));
+  	sts.app.use(require('morgan')('dev', options));
 };

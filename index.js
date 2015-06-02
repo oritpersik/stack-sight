@@ -7,20 +7,21 @@ var stackSight;
 
 
 function StackSight(options) {
-
     var options = options || {};
-    if (!options.user || !options.app) throw new Error('stackSight must user and app');
+    if (!options.user || !options.app) throw new Error('stackSight must user and appId');
     this.user = options.user || this.user;
     this.appId = options.appId || this.appId;
     this.app = options.app || this.app;
-
+    this.allow = options.allow || true;
 }
 
-StackSight.index = function(data) {
+StackSight.prototype.index = function(data) {
 
-    data.token = this.token;
+    if (!this.allow) return;
+
+    data.token = this.user;
     data.created = new Date();
-    data.appId = this.app;
+    data.appId = this.appId;
     data.loadavg = os.loadavg();
     data.freemem = os.freemem();
     data.totalmem = os.totalmem();
@@ -42,18 +43,18 @@ StackSight.index = function(data) {
 
 };
 
-
-(require('./core_modules/events')(StackSight));
-(require('./core_modules/console')(StackSight));
 // (require('./core_modules/sessions')(StackSight));
 
 module.exports = function(options) {
 
-    if (!stackSight)
+    if (!stackSight) {
         stackSight = new StackSight(options);
-
-     if (stackSight.app)
-        (require('./core_modules/requests')(StackSight, stackSight.app));
+        (require('./core_modules/events')(StackSight, stackSight));
+        (require('./core_modules/console')(stackSight));
+    
+        if (stackSight.app)
+            (require('./core_modules/requests')(stackSight));
+    }
 
     return stackSight;
 };

@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 
-module.exports = function(StackSight) {
+module.exports = function(sts) {
 
     function writeErrorLog(text) {
         fs.appendFile(process.cwd() + '/logs/error.log', text, function() {});
@@ -17,7 +17,7 @@ module.exports = function(StackSight) {
            }
            if (arguments[0] === '%s: %dms') text += 'ms';
            
-            StackSight.index({
+            sts.index({
                 index: 'logs',
                 type: 'console',
                 method: method,
