@@ -8,8 +8,8 @@ var tried = false;
 
 
 function StackSight(options) {
-    var allow = options.user && options.appId ? true : false;
     var options = options || {};
+    var allow = options.user && options.appId ? true : false;
     this.user = options.user || this.user;
     this.appId = options.appId || this.appId;
     this.app = options.app || this.app;
