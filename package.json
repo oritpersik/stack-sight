@@ -10,6 +10,9 @@
     "type": "git",
     "url": "https://github.com/oritpersik/stack-sight.git"
   },
+  "dependencies": {
+      "request": "latest"
+    },
   "keywords": [
     "mean",
     "meanio"
