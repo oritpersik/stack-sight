@@ -11,7 +11,7 @@ module.exports = function(StackSight, sts) {
 	function Events() {}
 
 
-	Events.prototype.publish = function(name, data) {
+	Events.prototype.publish = function(key, name , data) {
 
 	    stsEvents.emit(name, data);
 
@@ -23,7 +23,8 @@ module.exports = function(StackSight, sts) {
 		var options = {
 			index: 'events',
 			type: 'events',
-			name: name,
+			key: key,
+            name: name,
             design: design,
 			data: data
 		};
