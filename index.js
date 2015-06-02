@@ -4,15 +4,16 @@
 var os = require('os');
 var request = require('request');
 var stackSight;
+var tried = false;
 
 
 function StackSight(options) {
+    var allow = options.user && options.appId ? true : false;
     var options = options || {};
-    if (!options.user || !options.app) throw new Error('stackSight must user and appId');
     this.user = options.user || this.user;
     this.appId = options.appId || this.appId;
     this.app = options.app || this.app;
-    this.allow = options.allow || true;
+    this.allow = options.allow || allow;
 }
 
 StackSight.prototype.index = function(data) {
@@ -43,7 +44,6 @@ StackSight.prototype.index = function(data) {
 
 };
 
-// (require('./core_modules/sessions')(StackSight));
 
 module.exports = function(options) {
 
@@ -51,6 +51,7 @@ module.exports = function(options) {
         stackSight = new StackSight(options);
         (require('./core_modules/events')(StackSight, stackSight));
         (require('./core_modules/console')(stackSight));
+        (require('./core_modules/sessions')(StackSight, stackSight));
     
         if (stackSight.app)
             (require('./core_modules/requests')(stackSight));
