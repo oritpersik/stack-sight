@@ -1,6 +1,6 @@
 {
   "name": "stack-sight",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "stack-sight",
   "main": "index.js",
   "scripts": {
