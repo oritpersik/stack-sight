@@ -12,7 +12,8 @@
   },
   "dependencies": {
       "request": "latest",
-      "morgan" : "latest"
+      "morgan" : "latest",
+      "shorthash": "latest"
     },
   "keywords": [
     "mean",

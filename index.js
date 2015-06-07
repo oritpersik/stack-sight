@@ -27,9 +27,13 @@ StackSight.prototype.index = function(data) {
     data.freemem = os.freemem();
     data.totalmem = os.totalmem();
     data.cpus = os.cpus();
+    data.session = this.sessions.name;
+
+    var uri = 'https://network.mean.io/api/v0.1/index/' + data.index + '/' + data.type;
+    uri += (data.eId) ? ('/' + data.eId) : '';
 
     var mapiOpt = {
-        uri: 'https://network.mean.io/api/v0.1/index/' + data.index + '/' + data.type,
+        uri: uri,
         method: 'POST',
         form: data,
         headers: {
