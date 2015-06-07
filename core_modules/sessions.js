@@ -21,52 +21,13 @@ module.exports = function(StackSight, sts) {
 
     Sessions.prototype.down = function(options, err) {
 
-        console.log('*************************');
-        console.log(Sessions.numInstances, options);
-        console.log('*************************');
-
-        
-        console.log('----------- Session down --------------------', this.name);
-
-        //  sts.index({
-        //     index: 'sessions',
-        //     type: 'sessions',
-        //     action: 'down',
-        //     eId: this.name,
-        //     err: err,
-        //     down: new Date()
-
-        // });
         setTimeout(function() {
-            console.log('##########################################');
             if (options.cleanup) console.log('clean');
             if (options.test) console.log('TEST');
             if (err) console.log(err.stack);
             if (options.exit) process.exit();
         }, 100);
     };
-
-    function exitHandler(options, err) {
-      console.log('))))))))))))', err, process.pid);
-        // sts.index({
-        //     index: 'sessions',
-        //     type: 'sessions',
-        //     action: 'down',
-        //     pid: process.pid,
-        //     err: err
-        // });
-        setTimeout(function() {
-            console.log('##########################################');
-            if (options.cleanup) console.log('clean');
-            if (options.test) console.log('TEST');
-            if (err) console.log(err.stack);
-            if (options.exit) process.exit();
-        }, 100);
-    }
-
-    //do something when app is closing
-    // process.on('exit', exitHandler.bind(null,{cleanup:true}));
-    // process.on('error', exitHandler.bind(null,{cleanup:true}));   
 
     var pname = Date.now() + '-' + sts.user + '-' + process.pid;
 
