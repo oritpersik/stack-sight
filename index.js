@@ -24,8 +24,7 @@ StackSight.prototype.index = function(data) {
     data.created = new Date();
     data.appId = this.appId;
     data.loadavg = (os.loadavg()[0] / os.cpus().length);
-    data.freemem = os.freemem();
-    data.totalmem = os.totalmem();
+    data.memory = (os.totalmem() - os.freemem()) / os.totalmem();
     data.session = this.sessions.name;
 
     var uri = 'https://network.mean.io/api/v0.1/index/' + data.index + '/' + data.type;
