@@ -1,6 +1,6 @@
 {
   "name": "stacksight",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "stack-sight",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,8 @@
   "dependencies": {
       "request": "latest",
       "morgan" : "latest",
-      "shorthash": "latest"
+      "shorthash": "latest",
+      "git-repo-info": "latest"
     },
   "keywords": [
     "mean",

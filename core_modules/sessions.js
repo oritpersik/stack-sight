@@ -1,6 +1,7 @@
 'use strict';
 
 var sh = require("shorthash");
+var getRepoInfo = require('git-repo-info');
 
 module.exports = function(StackSight, sts) {
 
@@ -10,12 +11,16 @@ module.exports = function(StackSight, sts) {
 
 
     Sessions.prototype.up = function() {
+
+        var gitInfo = getRepoInfo();
+
         sts.index({
             index: 'sessions',
             type: 'sessions',
             eId: this.name,
             action: 'up',
-            up: new Date()
+            up: new Date(),
+            git: gitInfo
         });
     };
 
