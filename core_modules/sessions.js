@@ -2,6 +2,7 @@
 
 var sh = require("shorthash");
 var getRepoInfo = require('git-repo-info');
+var os = require('os');
 
 module.exports = function(StackSight, sts) {
 
@@ -20,7 +21,10 @@ module.exports = function(StackSight, sts) {
             eId: this.name,
             action: 'up',
             up: new Date(),
-            git: gitInfo
+            git: gitInfo,
+            platform: os.platform(),
+            hostname: os.hostname(),
+            architecture: os.arch()
         });
     };
 
