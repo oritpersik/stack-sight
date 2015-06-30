@@ -14,6 +14,7 @@ module.exports = function(sts) {
             };
 
             sts.index(data);
+            return true;
 		}
 	};
 
