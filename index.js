@@ -28,7 +28,7 @@ StackSight.prototype.index = function(data) {
     data.session = this.sessions.name;
 
     var uri = 'https://network.mean.io/api/v0.1/index/' + data.index + '/';
-    uri += process.env.NODE_ENV : 'development';
+    uri += (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
     uri += (data.eId) ? ('/' + data.eId) : '';
 
     var mapiOpt = {
