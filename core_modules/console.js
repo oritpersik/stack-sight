@@ -19,9 +19,9 @@ module.exports = function(sts) {
            
             sts.index({
                 index: 'logs',
-                type: 'console',
                 method: method,
-                content: text
+                content: text,
+                type: 'console'
             });
 
             writeErrorLog('\n' + [new Date().toISOString()] + ' ' + text);

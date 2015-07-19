@@ -7,10 +7,10 @@ module.exports = function(sts) {
 
 			 var data = {
                 index: 'logs',
-                type: 'request',
                 method: req.method,
                 url: req.originalUrl,
-                status: res.statusCode
+                status: res.statusCode,
+                type: 'request'
             };
 
             sts.index(data);
