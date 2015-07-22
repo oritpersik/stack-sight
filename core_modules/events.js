@@ -22,6 +22,7 @@ module.exports = function(StackSight, sts) {
 
 		var options = {
 			index: 'events',
+            eType: 'event',
 			key: key,
             name: name,
             design: design,

@@ -8,9 +8,10 @@ module.exports = function(sts) {
 			 var data = {
                 index: 'logs',
                 method: req.method,
-                url: req.originalUrl,
+                content: req.originalUrl,
                 status: res.statusCode,
-                type: 'request'
+                type: 'request',
+                eType: 'log'
             };
 
             sts.index(data);

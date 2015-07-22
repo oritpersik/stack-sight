@@ -21,7 +21,8 @@ module.exports = function(sts) {
                 index: 'logs',
                 method: method,
                 content: text,
-                type: 'console'
+                type: 'console',
+                eType: 'log'
             });
 
             writeErrorLog('\n' + [new Date().toISOString()] + ' ' + text);

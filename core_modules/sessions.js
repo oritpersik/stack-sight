@@ -17,6 +17,7 @@ module.exports = function(StackSight, sts) {
 
         sts.index({
             index: 'sessions',
+            eType: 'session',
             eId: this.name,
             action: 'up',
             up: new Date(),

@@ -26,9 +26,9 @@ StackSight.prototype.index = function(data) {
     data.loadavg = (os.loadavg()[0] / os.cpus().length);
     data.memory = (os.totalmem() - os.freemem()) / os.totalmem();
     data.session = this.sessions.name;
+    data.env = process.env.NODE_ENV || 'development';
 
-    var uri = 'https://network.mean.io/api/v0.1/index/' + data.index + '/';
-    uri += (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
+    var uri = 'https://network.mean.io/api/v0.1/index/' + data.index + '/' + data.eType;
     uri += (data.eId) ? ('/' + data.eId) : '';
 
     var mapiOpt = {
@@ -41,6 +41,7 @@ StackSight.prototype.index = function(data) {
     };
 
     delete mapiOpt.form.index;
+    delete mapiOpt.form.eType;
 
     request(mapiOpt, function(error, response, body) {});
 
