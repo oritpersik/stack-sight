@@ -40,7 +40,7 @@ StackSight.prototype.index = function(data) {
         }
     };
 
-    delete mapiOpt.form.index;
+    delete mapiOpt.form.eIndex;
     delete mapiOpt.form.eType;
 
     request(mapiOpt, function(error, response, body) {});
