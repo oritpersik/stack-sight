@@ -18,7 +18,7 @@ function StackSight(options) {
 
 StackSight.prototype.index = function(data) {
 
-    if (!this.allow) return;
+    if (!this.allow || !data.eIndex || !data.eType) return;
 
     data.token = this.user;
     data.created = new Date();
@@ -28,7 +28,7 @@ StackSight.prototype.index = function(data) {
     data.session = this.sessions.name;
     data.env = process.env.NODE_ENV || 'development';
 
-    var uri = 'https://network.mean.io/api/v0.1/index/' + data.index + '/' + data.eType;
+    var uri = 'https://dev.stacksight.io/api/v0.1/index/' + data.eIndex + '/' + data.eType;
     uri += (data.eId) ? ('/' + data.eId) : '';
 
     var mapiOpt = {

@@ -6,12 +6,12 @@ module.exports = function(sts) {
 		skip: function(req, res) {
 
 			 var data = {
-                index: 'logs',
+                eIndex: 'logs',
+                eType: 'log',
                 method: req.method,
                 content: req.originalUrl,
                 status: res.statusCode,
-                type: 'request',
-                eType: 'log'
+                type: 'request'
             };
 
             sts.index(data);

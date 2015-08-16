@@ -11,25 +11,17 @@ module.exports = function(StackSight, sts) {
 	function Events() {}
 
 
-	Events.prototype.publish = function(key, name , data) {
+	Events.prototype.publish = function(data) {
+        if (!data.type || !data.action) return;
 
-	    stsEvents.emit(key + ' ' + name, data);
+        stsEvents.emit(data.type + ' ' + data.action, data);
 
-        var design = data.design || {};
-        design.color = data.design.color || '#176583';
-        design.icon = data.design.icon || 'fa-bars';
-        delete data.design;
+        data.eIndex = 'events';
+        data.eType = 'event';
+        data.icon_col = data.icon_col || '#176583';
+        data.icon = data.icon || 'fa-bars';
 
-		var options = {
-			index: 'events',
-            eType: 'event',
-			key: key,
-            name: name,
-            design: design,
-			data: data
-		};
-
-		sts.index(options);
+		sts.index(data);
 	   
 	};
 

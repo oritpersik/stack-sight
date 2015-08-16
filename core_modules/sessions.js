@@ -16,7 +16,7 @@ module.exports = function(StackSight, sts) {
         var gitInfo = getRepoInfo();
 
         sts.index({
-            index: 'sessions',
+            eIndex: 'sessions',
             eType: 'session',
             eId: this.name,
             action: 'up',

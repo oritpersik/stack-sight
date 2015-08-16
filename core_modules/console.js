@@ -18,11 +18,11 @@ module.exports = function(sts) {
            if (arguments[0] === '%s: %dms') text += 'ms';
            
             sts.index({
-                index: 'logs',
+                eIndex: 'logs',
+                eType: 'log',
                 method: method,
                 content: text,
-                type: 'console',
-                eType: 'log'
+                type: 'console'
             });
 
             writeErrorLog('\n' + [new Date().toISOString()] + ' ' + text);
