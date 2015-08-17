@@ -18,8 +18,6 @@ module.exports = function(StackSight, sts) {
 
         data.eIndex = 'events';
         data.eType = 'event';
-        data.icon_col = data.icon_col || '#176583';
-        data.icon = data.icon || 'fa-bars';
 
 		sts.index(data);
 	   
