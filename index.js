@@ -25,7 +25,7 @@ StackSight.prototype.index = function(data) {
     data.appId = this.appId;
     data.loadavg = (os.loadavg()[0] / os.cpus().length);
     data.memory = (os.totalmem() - os.freemem()) / os.totalmem();
-    data.session = this.sessions.name;
+    data.session = this.session.name;
     data.env = process.env.NODE_ENV || 'development';
 
     var uri = 'https://dev.stacksight.io/api/v0.1/index/' + data.eIndex + '/' + data.eType;

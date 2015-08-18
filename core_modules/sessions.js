@@ -6,12 +6,12 @@ var os = require('os');
 
 module.exports = function(StackSight, sts) {
 
-    function Sessions(name) {
+    function Session(name) {
         this.name = sh.unique(name);
     };
 
 
-    Sessions.prototype.up = function() {
+    Session.prototype.up = function() {
 
         var gitInfo = getRepoInfo();
 
@@ -28,7 +28,7 @@ module.exports = function(StackSight, sts) {
         });
     };
 
-    Sessions.prototype.down = function(options, err) {
+    Session.prototype.down = function(options, err) {
 
         setTimeout(function() {
             if (options.cleanup) console.log('clean');
@@ -40,7 +40,7 @@ module.exports = function(StackSight, sts) {
 
     var pname = Date.now() + '-' + sts.user + '-' + process.pid;
 
-    StackSight.prototype.sessions = new Sessions(pname);
+    StackSight.prototype.session = new Session(pname);
 
     // process.on('exit', sts.sessions.down.bind(sts.sessions, {cleanup:true}));
     // process.on('error', sts.sessions.down.bind(sts.sessions, {cleanup:true}));
