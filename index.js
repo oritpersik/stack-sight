@@ -28,7 +28,7 @@ StackSight.prototype.index = function(data) {
     data.session = this.session.name;
     data.env = process.env.NODE_ENV || 'development';
 
-    var uri = 'https://api.stacksight.io/api/v0.1/index/' + data.eIndex + '/' + data.eType;
+    var uri = 'https://api.stacksight.io/v0.1/index/' + data.eIndex + '/' + data.eType;
     uri += (data.eId) ? ('/' + data.eId) : '';
 
     var mapiOpt = {
